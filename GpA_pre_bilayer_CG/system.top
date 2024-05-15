@@ -1,0 +1,18 @@
+#include "toppar/martini_v2.2.itp"
+#include "toppar/martini_v2.0_lipids_all_201506.itp"
+#include "toppar/martini_v2.0_ions.itp"
+#include "PROA_P.itp"
+#include "PROB_P.itp"
+
+[ system ]
+; name
+Martini system
+
+[ molecules ]
+; name        number
+PROA_P 1
+PROB_P 1
+DLPC 217
+W 2941
+NA 35
+CL 35

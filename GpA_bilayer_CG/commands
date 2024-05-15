@@ -1,0 +1,19 @@
+gmx grompp -c initial_system.pdb -n index.ndx -r initial_system.pdb -f minimisation.mdp -p system.top -o min.tpr
+gmx mdrun -s min.tpr -v -deffnm min &
+
+gmx grompp -c min.gro -r min.gro -f equil1.mdp -p system.top -n index.ndx -o equil1.tpr
+gmx mdrun -s equil1.tpr -v -deffnm equil1 &   
+
+gmx grompp -c equil1.gro -r equil1.gro -f equil2.mdp -p system.top -n index.ndx -o equil2.tpr
+gmx mdrun -s equil2.tpr -v -deffnm equil2 & 
+
+gmx grompp -c equil2.gro -r equil2.gro -f equil3.mdp -p system.top -n index.ndx -o equil3.tpr
+gmx mdrun -s equil3.tpr -v -deffnm equil3 &   
+
+gmx grompp -c equil3.gro  -f production.mdp -p system.top -n index.ndx -o md.tpr
+gmx mdrun -s md.tpr -v -deffnm md &
+
+
+PLEASE NOTE, you may need to add '-maxwarn 10' to the grompp command
+
+
